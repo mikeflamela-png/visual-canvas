@@ -6,6 +6,7 @@ const links = [
   { to: "/campaign-builder", label: "Campaign Builder" },
   { to: "/preview-reality", label: "Preview → Reality" },
   { to: "/productions", label: "Productions" },
+  { to: "/roster", label: "Roster" },
   { to: "/case-studies", label: "Case Studies" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
