@@ -26,6 +26,25 @@ import ashley from "@/assets/talent-ashley.jpg";
 import couple from "@/assets/talent-couple.jpg";
 import friends from "@/assets/talent-friends.jpg";
 import family from "@/assets/talent-family.jpg";
+import male01 from "@/assets/talent-male-01.jpg";
+import male02 from "@/assets/talent-male-02.jpg";
+import male03 from "@/assets/talent-male-03.jpg";
+import male04 from "@/assets/talent-male-04.jpg";
+import male05 from "@/assets/talent-male-05.jpg";
+import male06 from "@/assets/talent-male-06.jpg";
+import male07 from "@/assets/talent-male-07.jpg";
+import male08 from "@/assets/talent-male-08.jpg";
+import female01 from "@/assets/talent-female-01.jpg";
+import female02 from "@/assets/talent-female-02.jpg";
+import female03 from "@/assets/talent-female-03.jpg";
+import female04 from "@/assets/talent-female-04.jpg";
+import female05 from "@/assets/talent-female-05.jpg";
+import female06 from "@/assets/talent-female-06.jpg";
+import female07 from "@/assets/talent-female-07.jpg";
+import female08 from "@/assets/talent-female-08.jpg";
+import couple02 from "@/assets/talent-couple-02.jpg";
+import family02 from "@/assets/talent-family-02.jpg";
+import friends02 from "@/assets/talent-friends-02.jpg";
 
 export const heroSlides = [
   { src: heroTahoe, label: "Lake Tahoe" },
@@ -64,6 +83,45 @@ export const talent = [
   { name: "Couple", src: couple },
   { name: "Friends", src: friends },
   { name: "Family", src: family },
+];
+
+export type RosterTalent = {
+  name: string;
+  src: string;
+  category: "Male" | "Female" | "Couple & Family";
+  location: string;
+};
+
+export const roster: RosterTalent[] = [
+  // 10 male
+  { name: "Micah", src: micah, category: "Male", location: "Los Angeles" },
+  { name: "Nile", src: nile, category: "Male", location: "New York" },
+  { name: "August", src: male01, category: "Male", location: "San Francisco" },
+  { name: "Theo", src: male02, category: "Male", location: "Brooklyn" },
+  { name: "Elio", src: male03, category: "Male", location: "Milan" },
+  { name: "Kenji", src: male04, category: "Male", location: "Tokyo" },
+  { name: "Arlo", src: male05, category: "Male", location: "Copenhagen" },
+  { name: "Amari", src: male06, category: "Male", location: "London" },
+  { name: "Rafael", src: male07, category: "Male", location: "Mexico City" },
+  { name: "Finn", src: male08, category: "Male", location: "Malibu" },
+  // 10 female
+  { name: "Natalia", src: natalia, category: "Female", location: "Paris" },
+  { name: "Rachel", src: rachel, category: "Female", location: "New York" },
+  { name: "Ashley", src: ashley, category: "Female", location: "Los Angeles" },
+  { name: "Mei", src: female01, category: "Female", location: "Seoul" },
+  { name: "Imani", src: female02, category: "Female", location: "London" },
+  { name: "Yuki", src: female03, category: "Female", location: "Kyoto" },
+  { name: "Camila", src: female05, category: "Female", location: "Barcelona" },
+  { name: "Sylvie", src: female06, category: "Female", location: "Dublin" },
+  { name: "Margaux", src: female07, category: "Female", location: "Paris" },
+  { name: "Nia", src: female08, category: "Female", location: "Brooklyn" },
+  // 6 couple / family
+  { name: "The Wrenn Couple", src: couple, category: "Couple & Family", location: "Big Sur" },
+  { name: "The Ivers", src: family, category: "Couple & Family", location: "Ojai" },
+  { name: "The Fielders", src: friends, category: "Couple & Family", location: "Austin" },
+  { name: "Sam & Rae", src: couple02, category: "Couple & Family", location: "Joshua Tree" },
+  { name: "The Halden Family", src: family02, category: "Couple & Family", location: "Portland" },
+  { name: "The Coastline Trio", src: friends02, category: "Couple & Family", location: "San Diego" },
 ];
 
 export const locations = [

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RosterRouteImport } from './routes/roster'
 import { Route as ProductionsRouteImport } from './routes/productions'
 import { Route as PreviewRealityRouteImport } from './routes/preview-reality'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -22,6 +23,11 @@ import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RosterRoute = RosterRouteImport.update({
+  id: '/roster',
+  path: '/roster',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductionsRoute = ProductionsRouteImport.update({
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/preview-reality': typeof PreviewRealityRoute
   '/productions': typeof ProductionsRoute
+  '/roster': typeof RosterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/preview-reality': typeof PreviewRealityRoute
   '/productions': typeof ProductionsRoute
+  '/roster': typeof RosterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/preview-reality': typeof PreviewRealityRoute
   '/productions': typeof ProductionsRoute
+  '/roster': typeof RosterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/preview-reality'
     | '/productions'
+    | '/roster'
     | '/sitemap.xml'
     | '/case-studies/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/preview-reality'
     | '/productions'
+    | '/roster'
     | '/sitemap.xml'
     | '/case-studies/$slug'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/preview-reality'
     | '/productions'
+    | '/roster'
     | '/sitemap.xml'
     | '/case-studies/$slug'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   PreviewRealityRoute: typeof PreviewRealityRoute
   ProductionsRoute: typeof ProductionsRoute
+  RosterRoute: typeof RosterRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -153,6 +166,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roster': {
+      id: '/roster'
+      path: '/roster'
+      fullPath: '/roster'
+      preLoaderRoute: typeof RosterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/productions': {
@@ -234,6 +254,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   PreviewRealityRoute: PreviewRealityRoute,
   ProductionsRoute: ProductionsRoute,
+  RosterRoute: RosterRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
