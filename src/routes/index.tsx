@@ -29,7 +29,7 @@ function Home() {
             transition={{ duration: 2.4, ease: [0.22, 1, 0.36, 1] }}
           />
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/20 to-ink/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-ink/40 to-ink/90" />
         <div className="absolute inset-0 flex flex-col justify-end pb-24 md:pb-32">
           <div className="mx-auto w-full max-w-[1400px] px-6 md:px-10 text-paper">
             <motion.div
