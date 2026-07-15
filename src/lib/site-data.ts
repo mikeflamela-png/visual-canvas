@@ -111,7 +111,6 @@ export const roster: RosterTalent[] = [
   { name: "Mei", src: female01, category: "Female", location: "Seoul" },
   { name: "Imani", src: female02, category: "Female", location: "London" },
   { name: "Yuki", src: female03, category: "Female", location: "Kyoto" },
-  { name: "Ines", src: female04, category: "Female", location: "Lisbon" },
   { name: "Camila", src: female05, category: "Female", location: "Barcelona" },
   { name: "Sylvie", src: female06, category: "Female", location: "Dublin" },
   { name: "Margaux", src: female07, category: "Female", location: "Paris" },
