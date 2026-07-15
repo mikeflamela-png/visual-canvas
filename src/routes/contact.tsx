@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({ meta: [
-    { title: "Contact \u2014 Preview / Reality" },
+    { title: "Contact — Preview / Reality" },
     { name: "description", content: "Talk to the studio. We reply within a business day." },
   ]}),
   component: Contact,
@@ -45,7 +45,7 @@ function Contact() {
               <textarea rows={4} className="w-full bg-transparent border-b border-hairline focus:border-ink outline-none py-3 text-xl transition-colors resize-none" />
             </label>
             <button className="rounded-full bg-ink text-paper px-8 py-3.5 text-sm hover:pl-9 hover:pr-9 transition-all">
-              Send message \u2192
+              Send message →
             </button>
           </form>
         )}

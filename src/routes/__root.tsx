@@ -50,8 +50,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Preview / Reality \u2014 Design your campaign before you produce it" },
-      { name: "description", content: "A commercial production studio that lets brands visualize their next campaign \u2014 real locations, real talent, producible concepts \u2014 before committing to production." },
+      { title: "Preview / Reality — Design your campaign before you produce it" },
+      { name: "description", content: "A commercial production studio that lets brands visualize their next campaign — real locations, real talent, producible concepts — before committing to production." },
       { property: "og:title", content: "Preview / Reality" },
       { property: "og:description", content: "Design your next campaign before you produce it." },
       { property: "og:type", content: "website" },

@@ -47,7 +47,7 @@ function Home() {
               </h1>
               <p className="mt-8 max-w-xl text-paper/80 text-lg leading-relaxed">
                 Visualize your next commercial campaign using real locations, real talent,
-                and producible concepts \u2014 before committing to production.
+                and producible concepts — before committing to production.
               </p>
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Link
@@ -55,7 +55,7 @@ function Home() {
                   className="group inline-flex items-center gap-3 rounded-full bg-paper text-ink px-7 py-3.5 text-sm font-medium transition-all hover:pl-8 hover:pr-8"
                 >
                   Build my campaign
-                  <span className="inline-block transition-transform group-hover:translate-x-1">\u2192</span>
+                  <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
                 </Link>
                 <Link
                   to="/case-studies"
@@ -104,7 +104,7 @@ function Home() {
           <div className="flex items-end justify-between mb-16 gap-6">
             <div>
               <div className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-4">
-                Preview \u2192 Reality
+                Preview → Reality
               </div>
               <h2 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[1] text-ink max-w-3xl">
                 See the campaign, then produce it.
@@ -114,7 +114,7 @@ function Home() {
               to="/preview-reality"
               className="hidden md:inline-flex items-center gap-2 text-sm text-ink/70 hover:text-ink border-b border-ink/30 pb-1"
             >
-              All campaigns \u2192
+              All campaigns →
             </Link>
           </div>
 
@@ -164,7 +164,7 @@ function Home() {
               to="/campaign-builder"
               className="mt-10 inline-flex items-center gap-3 rounded-full bg-paper text-ink px-7 py-3.5 text-sm font-medium"
             >
-              Start building \u2192
+              Start building →
             </Link>
           </div>
           <div className="space-y-3">
@@ -195,7 +195,7 @@ function Home() {
                 Productions you can join.
               </h2>
             </div>
-            <Link to="/productions" className="hidden md:inline text-sm border-b border-ink/30 pb-1">All productions \u2192</Link>
+            <Link to="/productions" className="hidden md:inline text-sm border-b border-ink/30 pb-1">All productions →</Link>
           </div>
           <div className="flex gap-6 overflow-x-auto pb-6 -mx-6 md:-mx-10 px-6 md:px-10 snap-x">
             {productions.map((p) => (
@@ -209,7 +209,7 @@ function Home() {
                     <div className="text-xs text-muted-foreground">{p.spots} spots</div>
                   </div>
                   <div className="mt-1 text-sm text-muted-foreground">
-                    {p.month} \u00b7 {p.season}
+                    {p.month} · {p.season}
                   </div>
                   <div className="mt-3 text-xs text-muted-foreground/80">{p.brands}</div>
                 </div>

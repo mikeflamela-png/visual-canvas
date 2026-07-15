@@ -15,7 +15,7 @@ export function Footer() {
           <div className="text-sm space-y-3">
             <div className="text-paper/40 uppercase tracking-[0.15em] text-xs mb-4">Studio</div>
             <Link to="/campaign-builder" className="block text-paper/80 hover:text-paper">Campaign Builder</Link>
-            <Link to="/preview-reality" className="block text-paper/80 hover:text-paper">Preview \u2192 Reality</Link>
+            <Link to="/preview-reality" className="block text-paper/80 hover:text-paper">Preview → Reality</Link>
             <Link to="/productions" className="block text-paper/80 hover:text-paper">Upcoming Productions</Link>
             <Link to="/case-studies" className="block text-paper/80 hover:text-paper">Case Studies</Link>
           </div>

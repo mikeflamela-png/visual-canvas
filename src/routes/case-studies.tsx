@@ -4,7 +4,7 @@ import { campaigns } from "@/lib/site-data";
 
 export const Route = createFileRoute("/case-studies")({
   head: () => ({ meta: [
-    { title: "Case Studies \u2014 Preview / Reality" },
+    { title: "Case Studies — Preview / Reality" },
     { name: "description", content: "Editorial case studies of every campaign we've produced." },
   ]}),
   component: CaseIndex,

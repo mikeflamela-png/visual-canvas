@@ -7,7 +7,7 @@ import {
 
 export const Route = createFileRoute("/campaign-builder")({
   head: () => ({ meta: [
-    { title: "Campaign Builder \u2014 Preview / Reality" },
+    { title: "Campaign Builder — Preview / Reality" },
     { name: "description", content: "Configure your next commercial campaign in seven considered steps." },
   ]}),
   component: Builder,
@@ -106,7 +106,7 @@ function Builder() {
               disabled={step === 0}
               className="text-sm text-muted-foreground disabled:opacity-30 hover:text-ink transition"
             >
-              \u2190 Back
+              ← Back
             </button>
             {step < steps.length - 1 && (
               <button
@@ -114,7 +114,7 @@ function Builder() {
                 disabled={!canNext}
                 className="rounded-full bg-ink text-paper px-8 py-3 text-sm disabled:opacity-30 transition-all hover:pl-9 hover:pr-9"
               >
-                Continue \u2192
+                Continue →
               </button>
             )}
           </div>
@@ -154,7 +154,7 @@ function StepBrand({ s, set }: { s: State; set: (v: State) => void }) {
         <Field label="Product image (optional)">
           <label className="block cursor-pointer">
             <div className="border border-dashed border-hairline rounded-2xl py-10 text-center text-sm text-muted-foreground hover:border-ink transition">
-              {s.productImage ? "Uploaded \u2713 \u2014 replace" : "Drop or select a photo"}
+              {s.productImage ? "Uploaded ✓ — replace" : "Drop or select a photo"}
             </div>
             <input
               type="file"
@@ -303,7 +303,7 @@ function Review({ s, onPick, onGenerate }: { s: State; onPick: (v: "shared" | "d
   const rows: [string, string | undefined][] = [
     ["Brand", s.brand], ["Product", s.product], ["Story", s.story], ["Location", s.location],
     ["Talent", s.talent], ["Season", s.season], ["Mood", s.mood], ["Deliverables", s.deliverable],
-    ["Estimated timeline", "6\u201310 weeks"],
+    ["Estimated timeline", "6–10 weeks"],
   ];
   return (
     <div>
@@ -313,7 +313,7 @@ function Review({ s, onPick, onGenerate }: { s: State; onPick: (v: "shared" | "d
           {rows.map(([k, v]) => (
             <div key={k} className="flex items-baseline justify-between py-4">
               <span className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">{k}</span>
-              <span className="font-display text-2xl text-ink text-right">{v || "\u2014"}</span>
+              <span className="font-display text-2xl text-ink text-right">{v || "—"}</span>
             </div>
           ))}
         </div>
@@ -325,7 +325,7 @@ function Review({ s, onPick, onGenerate }: { s: State; onPick: (v: "shared" | "d
           >
             <div className="font-display text-2xl">Join an existing production</div>
             <div className={"mt-2 text-sm " + (s.productionType === "shared" ? "text-paper/70" : "text-muted-foreground")}>Share crew, talent and travel costs.</div>
-            <div className="mt-6 text-sm">Approx. <span className="font-medium">$3,500 \u2013 6,500</span></div>
+            <div className="mt-6 text-sm">Approx. <span className="font-medium">$3,500 – 6,500</span></div>
           </button>
           <button
             onClick={() => onPick("dedicated")}
@@ -340,7 +340,7 @@ function Review({ s, onPick, onGenerate }: { s: State; onPick: (v: "shared" | "d
             disabled={!s.productionType}
             className="mt-6 w-full rounded-full bg-ink text-paper py-4 text-sm disabled:opacity-30 transition-all hover:tracking-[0.15em]"
           >
-            Generate campaign \u2192
+            Generate campaign →
           </button>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/about")({
   head: () => ({ meta: [
-    { title: "About \u2014 Preview / Reality" },
+    { title: "About — Preview / Reality" },
     { name: "description", content: "A commercial production studio built around one idea: see the work before you buy it." },
   ]}),
   component: About,
@@ -19,7 +19,7 @@ function About() {
         <div className="mt-16 space-y-8 text-lg text-ink/80 leading-relaxed max-w-2xl">
           <p>
             Commercial production is an act of faith. Brands invest \$50k, \$500k, sometimes
-            more \u2014 without ever seeing what they're buying.
+            more — without ever seeing what they're buying.
           </p>
           <p>
             We changed that. Every campaign starts with a preview: real locations, real

@@ -7,7 +7,7 @@ export const Route = createFileRoute("/case-studies/$slug")({
   head: ({ params }) => {
     const c = campaigns.find((x) => x.slug === params.slug);
     return { meta: [
-      { title: c ? `${c.brand} \u2014 Case Study` : "Case Study" },
+      { title: c ? `${c.brand} — Case Study` : "Case Study" },
       { name: "description", content: c?.story ?? "" },
     ]};
   },
@@ -48,7 +48,7 @@ function CaseDetail() {
       </section>
 
       <section className="mx-auto max-w-[1400px] px-6 md:px-10 pb-24">
-        <div className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-8">AI Preview \u2192 Final</div>
+        <div className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-8">AI Preview → Final</div>
         <BeforeAfter before={c.preview} after={c.final} />
       </section>
 
@@ -62,7 +62,7 @@ function CaseDetail() {
           <div>
             <div className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-4">Shot list</div>
             <ul className="space-y-2 text-ink/80">
-              <li>Hero still \u00b7 location wide</li>
+              <li>Hero still · location wide</li>
               <li>Product-forward detail set</li>
               <li>Talent portrait sequence</li>
               <li>Golden-hour lifestyle motion</li>
@@ -86,7 +86,7 @@ function CaseDetail() {
         <p className="font-display text-3xl md:text-5xl leading-[1.2] text-ink italic">
           "They showed us the campaign before they made it. We knew, before signing anything, that it was right."
         </p>
-        <div className="mt-6 text-sm text-muted-foreground">\u2014 {c.brand} creative team</div>
+        <div className="mt-6 text-sm text-muted-foreground">— {c.brand} creative team</div>
       </section>
 
       <div className="text-center pb-32">

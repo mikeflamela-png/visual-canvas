@@ -5,7 +5,7 @@ import { BeforeAfter } from "@/components/site/BeforeAfter";
 
 export const Route = createFileRoute("/preview-reality")({
   head: () => ({ meta: [
-    { title: "Preview \u2192 Reality \u2014 Campaigns" },
+    { title: "Preview → Reality — Campaigns" },
     { name: "description", content: "Drag between our previewed campaigns and the final produced photography." },
   ]}),
   component: PageC,
@@ -15,12 +15,12 @@ function PageC() {
   return (
     <div className="pt-32 bg-paper">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 pb-24">
-        <div className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-6">Preview \u2192 Reality</div>
+        <div className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-6">Preview → Reality</div>
         <h1 className="font-display text-[clamp(3rem,7vw,7rem)] leading-[0.95] text-ink max-w-5xl">
           What we previewed. What we produced.
         </h1>
         <p className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed">
-          Every campaign begins with a preview \u2014 real locations, real talent, real
+          Every campaign begins with a preview — real locations, real talent, real
           concepts. Drag to see how each one became reality.
         </p>
       </div>
@@ -47,7 +47,7 @@ function PageC() {
                   params={{ slug: c.slug }}
                   className="mt-10 inline-flex items-center gap-3 rounded-full bg-ink text-paper px-7 py-3 text-sm hover:pl-8 hover:pr-8 transition-all"
                 >
-                  Open case study \u2192
+                  Open case study →
                 </Link>
               </div>
             </motion.article>

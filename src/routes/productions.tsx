@@ -4,7 +4,7 @@ import { productions } from "@/lib/site-data";
 
 export const Route = createFileRoute("/productions")({
   head: () => ({ meta: [
-    { title: "Upcoming Productions \u2014 Preview / Reality" },
+    { title: "Upcoming Productions — Preview / Reality" },
     { name: "description", content: "Join an upcoming production. Shared crew, shared travel, exclusive creative." },
   ]}),
   component: PageP,
@@ -41,7 +41,7 @@ function PageP() {
                 <div className="font-display text-3xl text-ink">{p.location}</div>
                 <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{p.spots} spots</div>
               </div>
-              <div className="mt-2 text-sm text-muted-foreground">{p.month} \u00b7 {p.season}</div>
+              <div className="mt-2 text-sm text-muted-foreground">{p.month} · {p.season}</div>
               <div className="mt-4 text-xs text-muted-foreground/80 border-t border-hairline pt-4">
                 Best for: {p.brands}
               </div>
