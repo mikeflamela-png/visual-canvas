@@ -26,10 +26,8 @@ export function Nav() {
   return (
     <header
       className={
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500 " +
-        (scrolled
-          ? "bg-ink/85 backdrop-blur-xl border-b border-white/5"
-          : "bg-ink/40 backdrop-blur-md")
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500 bg-ink " +
+        (scrolled ? "border-b border-white/5 shadow-soft" : "")
       }
     >
       <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6 md:px-10">
