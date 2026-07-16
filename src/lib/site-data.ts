@@ -191,3 +191,86 @@ export const loadingMessages = [
   "Building campaign…",
   "Rendering preview…",
 ];
+
+// ---------- Slot registry (for the image manager) ----------
+
+export function slotSlug(s: string) {
+  return s
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+export function heroSlotId(label: string) {
+  return `hero.${slotSlug(label)}`;
+}
+export function campaignSlotId(slug: string, kind: "preview" | "final") {
+  return `campaign.${slug}.${kind}`;
+}
+export function rosterSlotId(name: string) {
+  return `roster.${slotSlug(name)}`;
+}
+export function locationSlotId(name: string) {
+  return `location.${slotSlug(name)}`;
+}
+export function seasonSlotId(name: string) {
+  return `season.${slotSlug(name)}`;
+}
+export function productionSlotId(location: string) {
+  return `production.${slotSlug(location)}`;
+}
+
+export type ImageSlot = {
+  id: string;
+  label: string;
+  group: string;
+  fallback: string;
+};
+
+export const slotRegistry: ImageSlot[] = [
+  ...heroSlides.map((h) => ({
+    id: heroSlotId(h.label),
+    label: h.label,
+    group: "Hero",
+    fallback: h.src,
+  })),
+  ...campaigns.flatMap((c) => [
+    {
+      id: campaignSlotId(c.slug, "preview"),
+      label: `${c.brand} — Preview`,
+      group: "Case Studies",
+      fallback: c.preview,
+    },
+    {
+      id: campaignSlotId(c.slug, "final"),
+      label: `${c.brand} — Final`,
+      group: "Case Studies",
+      fallback: c.final,
+    },
+  ]),
+  ...roster.map((r) => ({
+    id: rosterSlotId(r.name),
+    label: `${r.name} · ${r.category}`,
+    group: "Roster",
+    fallback: r.src,
+  })),
+  ...locations.map((l) => ({
+    id: locationSlotId(l.name),
+    label: l.name,
+    group: "Locations",
+    fallback: l.src,
+  })),
+  ...seasons.map((s) => ({
+    id: seasonSlotId(s.name),
+    label: s.name,
+    group: "Seasons",
+    fallback: s.src,
+  })),
+  ...productions.map((p) => ({
+    id: productionSlotId(p.location),
+    label: `${p.location} · ${p.month}`,
+    group: "Productions",
+    fallback: p.src,
+  })),
+];
