@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { useMemo, useState } from "react";
-import { roster, type RosterTalent } from "@/lib/site-data";
+import { roster, rosterSlotId, type RosterTalent } from "@/lib/site-data";
+import { resolveImage, useImageOverrides } from "@/lib/image-overrides";
 
 export const Route = createFileRoute("/roster")({
   head: () => ({
@@ -19,6 +20,7 @@ const filters = ["All", "Male", "Female", "Couple & Family"] as const;
 type Filter = (typeof filters)[number];
 
 function RosterPage() {
+  useImageOverrides();
   const [filter, setFilter] = useState<Filter>("All");
 
   const items = useMemo<RosterTalent[]>(
@@ -84,7 +86,7 @@ function RosterPage() {
             >
               <div className="relative overflow-hidden rounded-2xl aspect-[3/4] bg-card">
                 <img
-                  src={t.src}
+                  src={resolveImage(rosterSlotId(t.name), t.src)}
                   alt={t.name}
                   loading="lazy"
                   width={768}
