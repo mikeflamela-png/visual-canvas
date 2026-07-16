@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RosterRouteImport } from './routes/roster'
 import { Route as ProductionsRouteImport } from './routes/productions'
 import { Route as PreviewRealityRouteImport } from './routes/preview-reality'
+import { Route as ImageManagerRouteImport } from './routes/image-manager'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as CampaignBuilderRouteImport } from './routes/campaign-builder'
@@ -38,6 +39,11 @@ const ProductionsRoute = ProductionsRouteImport.update({
 const PreviewRealityRoute = PreviewRealityRouteImport.update({
   id: '/preview-reality',
   path: '/preview-reality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImageManagerRoute = ImageManagerRouteImport.update({
+  id: '/image-manager',
+  path: '/image-manager',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/campaign-builder': typeof CampaignBuilderRoute
   '/case-studies': typeof CaseStudiesRouteWithChildren
   '/contact': typeof ContactRoute
+  '/image-manager': typeof ImageManagerRoute
   '/preview-reality': typeof PreviewRealityRoute
   '/productions': typeof ProductionsRoute
   '/roster': typeof RosterRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/campaign-builder': typeof CampaignBuilderRoute
   '/case-studies': typeof CaseStudiesRouteWithChildren
   '/contact': typeof ContactRoute
+  '/image-manager': typeof ImageManagerRoute
   '/preview-reality': typeof PreviewRealityRoute
   '/productions': typeof ProductionsRoute
   '/roster': typeof RosterRoute
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/campaign-builder': typeof CampaignBuilderRoute
   '/case-studies': typeof CaseStudiesRouteWithChildren
   '/contact': typeof ContactRoute
+  '/image-manager': typeof ImageManagerRoute
   '/preview-reality': typeof PreviewRealityRoute
   '/productions': typeof ProductionsRoute
   '/roster': typeof RosterRoute
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
     | '/campaign-builder'
     | '/case-studies'
     | '/contact'
+    | '/image-manager'
     | '/preview-reality'
     | '/productions'
     | '/roster'
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/campaign-builder'
     | '/case-studies'
     | '/contact'
+    | '/image-manager'
     | '/preview-reality'
     | '/productions'
     | '/roster'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/campaign-builder'
     | '/case-studies'
     | '/contact'
+    | '/image-manager'
     | '/preview-reality'
     | '/productions'
     | '/roster'
@@ -153,6 +165,7 @@ export interface RootRouteChildren {
   CampaignBuilderRoute: typeof CampaignBuilderRoute
   CaseStudiesRoute: typeof CaseStudiesRouteWithChildren
   ContactRoute: typeof ContactRoute
+  ImageManagerRoute: typeof ImageManagerRoute
   PreviewRealityRoute: typeof PreviewRealityRoute
   ProductionsRoute: typeof ProductionsRoute
   RosterRoute: typeof RosterRoute
@@ -187,6 +200,13 @@ declare module '@tanstack/react-router' {
       path: '/preview-reality'
       fullPath: '/preview-reality'
       preLoaderRoute: typeof PreviewRealityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/image-manager': {
+      id: '/image-manager'
+      path: '/image-manager'
+      fullPath: '/image-manager'
+      preLoaderRoute: typeof ImageManagerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -252,6 +272,7 @@ const rootRouteChildren: RootRouteChildren = {
   CampaignBuilderRoute: CampaignBuilderRoute,
   CaseStudiesRoute: CaseStudiesRouteWithChildren,
   ContactRoute: ContactRoute,
+  ImageManagerRoute: ImageManagerRoute,
   PreviewRealityRoute: PreviewRealityRoute,
   ProductionsRoute: ProductionsRoute,
   RosterRoute: RosterRoute,
@@ -260,3 +281,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
