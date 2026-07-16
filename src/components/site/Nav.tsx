@@ -33,7 +33,7 @@ export function Nav() {
     >
       <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6 md:px-10">
         <Link to="/" className="font-display text-xl text-paper tracking-tight">
-          Preview<span className="text-paper/50"> / </span>Reality
+          EBB & FLOW MEDIA&nbsp;
         </Link>
         <nav className="hidden lg:flex items-center gap-8">
           {links.slice(1).map((l) => {
