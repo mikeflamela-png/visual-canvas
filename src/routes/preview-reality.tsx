@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { campaigns } from "@/lib/site-data";
+import { campaigns, campaignSlotId } from "@/lib/site-data";
+import { resolveImage, useImageOverrides } from "@/lib/image-overrides";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 
 export const Route = createFileRoute("/preview-reality")({
@@ -12,6 +13,7 @@ export const Route = createFileRoute("/preview-reality")({
 });
 
 function PageC() {
+  useImageOverrides();
   return (
     <div className="pt-32 bg-paper">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 pb-24">
@@ -36,7 +38,10 @@ function PageC() {
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className={"grid gap-10 md:gap-16 items-center md:grid-cols-2 " + (i % 2 === 1 ? "md:[&>*:first-child]:order-2" : "")}
             >
-              <BeforeAfter before={c.preview} after={c.final} />
+              <BeforeAfter
+                before={resolveImage(campaignSlotId(c.slug, "preview"), c.preview)}
+                after={resolveImage(campaignSlotId(c.slug, "final"), c.final)}
+              />
               <div>
                 <div className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-4">{c.location}</div>
                 <h2 className="font-display text-5xl md:text-7xl text-ink leading-[1]">{c.brand}</h2>

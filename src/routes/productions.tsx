@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { productions } from "@/lib/site-data";
+import { productions, productionSlotId } from "@/lib/site-data";
+import { resolveImage, useImageOverrides } from "@/lib/image-overrides";
 
 export const Route = createFileRoute("/productions")({
   head: () => ({ meta: [
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/productions")({
 });
 
 function PageP() {
+  useImageOverrides();
   return (
     <div className="pt-32 bg-paper">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10 pb-20">
@@ -35,7 +37,7 @@ function PageP() {
               className="group"
             >
               <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-cream">
-                <img src={p.src} alt={p.location} className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="lazy" />
+                <img src={resolveImage(productionSlotId(p.location), p.src)} alt={p.location} className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="lazy" />
               </div>
               <div className="mt-6 flex items-baseline justify-between">
                 <div className="font-display text-3xl text-ink">{p.location}</div>

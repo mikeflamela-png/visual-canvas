@@ -1,6 +1,7 @@
 import { createFileRoute, Link, Outlet, useMatches } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { campaigns } from "@/lib/site-data";
+import { campaigns, campaignSlotId } from "@/lib/site-data";
+import { resolveImage, useImageOverrides } from "@/lib/image-overrides";
 
 export const Route = createFileRoute("/case-studies")({
   head: () => ({ meta: [
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/case-studies")({
 });
 
 function CaseIndex() {
+  useImageOverrides();
   const matches = useMatches();
   const onChild = matches.some((m) => m.routeId === "/case-studies/$slug");
   if (onChild) return <Outlet />;
@@ -35,7 +37,7 @@ function CaseIndex() {
             >
               <Link to="/case-studies/$slug" params={{ slug: c.slug }} className="group block">
                 <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-cream">
-                  <img src={c.final} alt={c.brand} className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="lazy" />
+                  <img src={resolveImage(campaignSlotId(c.slug, "final"), c.final)} alt={c.brand} className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" loading="lazy" />
                 </div>
                 <div className="mt-5 flex items-baseline justify-between">
                   <div className="font-display text-3xl text-ink group-hover:italic transition">{c.brand}</div>
