@@ -95,9 +95,9 @@ export type RosterTalent = {
 export const roster: RosterTalent[] = [
   // 10 male
   { name: "Micah", src: micah, category: "Male", location: "Los Angeles" },
-  { name: "Nile", src: nile, category: "Male", location: "New York" },
-  { name: "August", src: male01, category: "Male", location: "San Francisco" },
-  { name: "Theo", src: male02, category: "Male", location: "Brooklyn" },
+  { name: "Nile", src: nile, category: "Female", location: "New York" },
+  { name: "Austin", src: male01, category: "Male", location: "San Francisco" },
+  { name: "Andi", src: male02, category: "Male", location: "Brooklyn" },
   { name: "Elio", src: male03, category: "Male", location: "Milan" },
   { name: "Kenji", src: male04, category: "Male", location: "Tokyo" },
   { name: "Arlo", src: male05, category: "Male", location: "Copenhagen" },
