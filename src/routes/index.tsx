@@ -1,13 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
-import { heroSlides, campaigns, productions } from "@/lib/site-data";
+import {
+  heroSlides,
+  campaigns,
+  productions,
+  heroSlotId,
+  campaignSlotId,
+  productionSlotId,
+} from "@/lib/site-data";
+import { resolveImage, useImageOverrides } from "@/lib/image-overrides";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 
 export const Route = createFileRoute("/")({ component: Home });
 
 function Home() {
   const [i, setI] = useState(0);
+  useImageOverrides();
   useEffect(() => {
     const t = setInterval(() => setI((n) => (n + 1) % heroSlides.length), 5200);
     return () => clearInterval(t);
@@ -20,7 +29,7 @@ function Home() {
         <AnimatePresence mode="sync">
           <motion.img
             key={i}
-            src={heroSlides[i].src}
+            src={resolveImage(heroSlotId(heroSlides[i].label), heroSlides[i].src)}
             alt={heroSlides[i].label}
             className="absolute inset-0 h-full w-full object-cover"
             initial={{ opacity: 0, scale: 1.06 }}
@@ -127,7 +136,10 @@ function Home() {
                 viewport={{ once: true, margin: "-10%" }}
                 transition={{ duration: 0.9, delay: k * 0.05, ease: [0.22, 1, 0.36, 1] }}
               >
-                <BeforeAfter before={c.preview} after={c.final} />
+                <BeforeAfter
+                  before={resolveImage(campaignSlotId(c.slug, "preview"), c.preview)}
+                  after={resolveImage(campaignSlotId(c.slug, "final"), c.final)}
+                />
                 <div className="mt-5 flex items-baseline justify-between">
                   <Link to="/case-studies/$slug" params={{ slug: c.slug }} className="font-display text-3xl text-ink hover:italic">
                     {c.brand}
@@ -201,7 +213,7 @@ function Home() {
             {productions.map((p) => (
               <div key={p.location} className="min-w-[300px] md:min-w-[360px] snap-start">
                 <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-cream">
-                  <img src={p.src} alt={p.location} className="h-full w-full object-cover transition-transform duration-1000 hover:scale-105" loading="lazy" />
+                  <img src={resolveImage(productionSlotId(p.location), p.src)} alt={p.location} className="h-full w-full object-cover transition-transform duration-1000 hover:scale-105" loading="lazy" />
                 </div>
                 <div className="mt-5">
                   <div className="flex items-baseline justify-between">
