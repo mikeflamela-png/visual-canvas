@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { campaigns } from "@/lib/site-data";
+import { campaigns, campaignSlotId } from "@/lib/site-data";
+import { resolveImage, useImageOverrides } from "@/lib/image-overrides";
 import { BeforeAfter } from "@/components/site/BeforeAfter";
 
 export const Route = createFileRoute("/case-studies/$slug")({
@@ -18,14 +19,17 @@ export const Route = createFileRoute("/case-studies/$slug")({
 });
 
 function CaseDetail() {
+  useImageOverrides();
   const { slug } = Route.useParams();
   const c = campaigns.find((x) => x.slug === slug);
   if (!c) throw notFound();
+  const preview = resolveImage(campaignSlotId(c.slug, "preview"), c.preview);
+  const final = resolveImage(campaignSlotId(c.slug, "final"), c.final);
 
   return (
     <article className="bg-paper">
       <div className="relative h-[80svh] min-h-[520px] w-full overflow-hidden bg-ink">
-        <img src={c.final} alt={c.brand} className="absolute inset-0 h-full w-full object-cover" />
+        <img src={final} alt={c.brand} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-transparent to-ink/60" />
         <div className="absolute inset-0 flex flex-col justify-end pb-16 md:pb-24">
           <div className="mx-auto w-full max-w-[1400px] px-6 md:px-10 text-paper">
@@ -49,12 +53,12 @@ function CaseDetail() {
 
       <section className="mx-auto max-w-[1400px] px-6 md:px-10 pb-24">
         <div className="text-[11px] uppercase tracking-[0.3em] text-muted-foreground mb-8">AI Preview → Final</div>
-        <BeforeAfter before={c.preview} after={c.final} />
+        <BeforeAfter before={preview} after={final} />
       </section>
 
       <section className="mx-auto max-w-[1400px] px-6 md:px-10 pb-24 grid gap-6 md:grid-cols-2">
-        <img src={c.final} className="rounded-2xl w-full aspect-[4/5] object-cover" alt="" loading="lazy" />
-        <img src={c.preview} className="rounded-2xl w-full aspect-[4/5] object-cover" alt="" loading="lazy" />
+        <img src={final} className="rounded-2xl w-full aspect-[4/5] object-cover" alt="" loading="lazy" />
+        <img src={preview} className="rounded-2xl w-full aspect-[4/5] object-cover" alt="" loading="lazy" />
       </section>
 
       <section className="bg-cream py-24">
