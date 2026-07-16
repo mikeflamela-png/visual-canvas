@@ -12,10 +12,10 @@ export const Route = createFileRoute("/case-studies")({
 });
 
 function CaseIndex() {
+  useImageOverrides();
   const matches = useMatches();
   const onChild = matches.some((m) => m.routeId === "/case-studies/$slug");
   if (onChild) return <Outlet />;
-  useImageOverrides();
 
   return (
     <div className="pt-32 bg-paper">
